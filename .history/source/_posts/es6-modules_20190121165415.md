@@ -1,0 +1,162 @@
+---
+title: 关于前端模块化你应该知道的
+date: 2019-01-15 17:54:40
+tags: javascript
+---
+![](https://ws1.sinaimg.cn/large/e4d30300ly1fzeb3ctfvfj20xt0j174d.jpg)
+### 模块化的意义
+- 对大型网站项目做更细粒度的拆分，团队协作中每个人各司其责负责自己的模块，彼此模块之间不会造成命名空间污染
+- 根据页面组成拆分出不同的子组件
+- 针对不同业务逻辑，抽象出不同的功能模块，供业务方黑盒调用
+- 针对重复的功能和页面元素，开发维护一套公共代码即可完成模块复用，有更高的复用性和可维护性
+- 对于当前页面非必须呈现的模块资源，使用按需加载，提高首屏响应速度
+
+### 模块化方案比较
+- 在ES6 Modules出现之前主流的模块化方案有CommonJS、AMD、CMD
+- CommonJS方案主要应用于服务端NodeJS，在node环境下原生支持
+- AMD和CMD作为第三方的类库，来解决浏览器端模块化问题，正逐渐被ES6模块化所替代
+- ES6 Modules则是第一次在javascript语言标准层面添加的模块化解决方案
+
+### ES6 Modules
+#### 与CommonJS的区别
+1. CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用
+2. 静态化，编译时就确定模块之间的依赖关系、输出和引入的变量；CommonJS是在js运行到对应位置时，才会加载确定这些信息
+- CommonJS输出的是一整个对象(即module.exports属性)，即使是用不到的属性和变量，一样会被加载引入进来
+```js
+// CommonJS模块
+let { stat, exists, readFile } = require('fs');
+
+// 等同于
+let _fs = require('fs');
+let stat = _fs.stat;
+let exists = _fs.exists;
+let readfile = _fs.readfile;
+```
+先加载整个对象，再依次读取需要的三个方法，这种加载称为<b>*“运行时加载”*</b>
+- ES6 Modules不是输出的不是对象，通过export指定输出的内容，通过import指定引入的内容
+```js
+// ES6模块
+import { stat, exists, readFile } from 'fs';
+```
+上面代码表示从'fs'模块中只引入三个方法，其他方法不加载。这种加载称为<b>*“编译时加载”或者静态加载*</b>，即 ES6 可以在编译时就完成模块加载，效率要比 CommonJS 模块的加载方式高
+
+
+#### export
+常被用来export对外接口格式有：
+- variable变量
+- class对象
+- function函数
+
+错误写法
+```js
+// 报错
+export 1
+
+// 报错
+var exp = 1;
+export exp
+```
+正确写法：
+export变量
+```js
+// 写法一
+export var m = 1
+
+// 写法二
+var m = 1
+export {m}
+
+// 写法三
+var n = 1
+export {n as m}
+```
+export 函数
+```js
+// 报错
+function f() {}
+export f
+
+// 正确
+export function f() {};
+
+// 正确
+function f() {}
+export {f}
+```
+export default 指定默认输出
+实质是指定输出了一个叫default的变量或function
+```js
+// modules.js
+function add(x, y) {
+  return x * y;
+}
+export {add as default};
+// 等同于
+// export default add;
+
+// app.js
+import { default as foo } from 'modules';
+// 等同于
+// import foo from 'modules';
+```
+常用用法
+```js
+// 输出常量
+export 1
+
+//输出变量
+let share = 1
+
+export default share
+
+//输出函数
+function share(){
+    //....
+}
+export default share
+
+//输出匿名函数
+export default function(){
+    //...
+}
+```
+
+#### import
+- 从模块中引入需要的方法、变量等
+```js
+// export很多接口时
+import { Component } from "react"
+
+// export default 指定默认输出时,可以为其指定任意名字
+import React from "react"
+
+// 重命名
+import { Component as AAA } from "react"
+
+// 整体加载
+import { * as Util} from './util'
+
+```
+- import引入的接口是只读的，不允许对其更改
+- import命令是编译阶段执行的，在代码运行之前，所以import命令会被提升到文件顶部，优先执行
+```js
+//这样写没有任何问题
+foo();
+
+import { foo } from 'my_module';
+```
+#### import()动态加载
+前面介绍了，export、import命令是<b>*编译时加载*</b>这就导致不支持<b>*运行时加载*</b>才能实现的按需加载功能，所以加入了import()功能，*程序运行到import()这里才会加载模块*
+- import()返回一个Promise对象
+```js
+// ../utils 模块有默认输出时
+import('../utils').then( module => {
+    // module是模块暴露的默认接口
+})
+
+// ../utils 模块没有默认输出时
+import('../utils').then((moduleA, moduleB,) => {
+    // moduleA、moduleB是对应输出的接口
+})
+```
+
