@@ -43,7 +43,29 @@ function getValue(condition) {
     }
 }
 ```
-
+##### 延伸
+关于编译器对函数、变量提升的问题：
+- var和函数声明会在代码执行前，被提升到作用域顶部
+- 函数表达式的方式，只会把变量提升
+- let不会被提升，做到了即用即声明的目的，不会因为变量提升导致不可预估的异常
+  ```js
+  // 函数声明提升
+  printName('hello world')
+  var printName = function(name){
+    console.log('name:',name) //name: hello world
+  }
+  // 函数表达式不会被提升
+  printName('hello world') // Uncaught TypeError: printName is not a function
+  var printName = function(name){
+    console.log('name:',name)
+  }
+  /// 等效于
+  var printName //变量提升
+  printName('hello world') // Uncaught TypeError: printName is not a function
+  printName = function(name){
+    console.log('name:',name)
+  }
+  ```
 #### 块级声明
 块极作用域(又叫词法作用域)被创建的情况：
 - 在函数内部
@@ -106,7 +128,7 @@ funcs.forEach(function(func) {
 func(); // 输出数值 "10" 十次
 });
 ```
-var被提升至最顶部，在循环中i变量是共享的，所以在循环内创建的函数都拥有对同一i变量的引用，因此当最后执行函数时，打印的都是最后的i结果
+var被提升至最顶部，在循环中i变量是共享的同一个变量，所以在循环内创建的函数都拥有对同一i变量的引用，因此当最后执行函数时，打印的都是最后的i结果
 
 ```js
 var funcs = [];
@@ -119,7 +141,7 @@ funcs.forEach(function(func) {
 func(); // 从 0 到 9 依次输出
 })
 ```
-在每次循环中，都会创建一个新的局部块极变量i,在每一次迭代中都是在自己的局部作用域中，因此i变量不会被共享，当函数执行时，也就是打印对应作用域中的i变量的值
+在每次循环中，在局部作用域中都会创建一个新的局部块极变量i,在每一次迭代中都是在自己的局部作用域中，因此i变量不会被共享，当函数执行时，也就是打印对应作用域中的i变量的值
 
 #### 4. 全局块极绑定
 - 在全局作用域，var声明的变量会挂载到window对象上
