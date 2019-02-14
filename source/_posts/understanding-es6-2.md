@@ -19,7 +19,7 @@ console.log("x".repeat(3));         // "xxx"
 console.log("hello".repeat(2));     // "hellohello"
 console.log("abc".repeat(4));       // "abcabcabcabc"
 ```
-### 模板字面量 ``
+### 模板字面量 \`\`
 - 多行字符串：针对多行字符串的形式概念；
 - 基本的字符串格式化：将字符串部分替换为已存在的变量值的能力；
 - HTML 转义：能转换字符串以便将其安全插入到 HTML 中的能力
