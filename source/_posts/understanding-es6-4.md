@@ -66,4 +66,28 @@ console.log(person) // {name: "Tome", age: "18", weight: "130"}
     console.log(d) // {value: 17, writable: true, enumerable: true, configurable: true}
    ```
    使用Object.assign()后，o的get属性被转换成obj的数据属性，也就是d.value = 17
+#### 更改对象的原型
+ES5中添加了Object.getPrototypeOf()方法来获取指定对象的原型
+ES6中添加了修改指定对象原型的方法：Object.setPrototypeOf(指定对象, 目标原型)，这样设置完后，指定对象就继承了新的目标原型的方法和属性
+#### 使用super引用访问对象的原型
+super是指向当前对象的原型的一个指针，实际上就是Object.getPrototypeOf(this)的值，使用super引用后，便可以访问原型对象的任何属性和方法
+注意：super只能在ES6语法的简写属性方法中使用，否则会报错
+```js
+// 在ES6简写方法语法中引用super可以正常访问
+var person= {
+getName(){
+	console.log('super',super.constructor())
+}}
+person.getName() 
+
+// 使用传统的属性方法的语法，引用super会报错
+var person= {
+getName: function(){
+    // Uncaught SyntaxError: 'super' keyword unexpected here
+	console.log('super',super.constructor())
+}}
+person.getName()
+```
+
+
    

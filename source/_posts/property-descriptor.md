@@ -39,6 +39,7 @@ tags:
 - descriptor：object,将被定义或修改的属性描述符
 当描述符中省略某些字段时，这些字段将使用它们的默认值。拥有布尔值的字段的默认值都是false。
 value，get和set字段的默认值为undefined。一个没有get/set/value/writable定义的属性被称为“通用的”，并被“键入”为一个数据描述符
+
 ```js
 var bValue, o={};
 Object.defineProperty(o, "b", {
@@ -125,6 +126,15 @@ Object.defineProperty(o, "a", {
   enumerable : true
 });
 
+var o = { get foo() { return 17; } };
+var p = Object.getOwnPropertyDescriptor(o, 'foo')
+console.log(p)
+// {
+//   configurable: true,
+//   enumerable: true,
+//   get: /*the getter function*/,
+//   set: undefined
+// }
 
 // 另一方面，
 Object.defineProperty(o, "a", { value : 1 });
@@ -135,6 +145,8 @@ Object.defineProperty(o, "a", {
   configurable : false,
   enumerable : false
 });
+
+
 ```
 #### Object.getOwnPropertyDescriptor(obj, prop) 获取指定对象自有属性的属性描述符
 obj：需要查找的目标对象
