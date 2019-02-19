@@ -22,10 +22,10 @@ tags:
 ### 浏览器的多进程架构
 在"更多工具" -> "任务管理器"中可以查看当前浏览器中运行的进程
 我们可以看到的但不限于以下几种：
-- Browser主进程：协调、主控作用
-- GPU进程：用于硬件加速，3D绘制
+- Browser主进程：协调、主控作用(浏览器的主进程，负责浏览器界面的显示、各个页面的管理、是所有其他类型进程的祖先、负责它们的创建和销毁等工作，它有且仅有一个)
+- GPU进程：用于硬件加速，3D绘制(当且仅当 GPU 硬件加速打开的时候才会被创建，主要用于对 3D 图形加速调用的实现)
 ![](https://ws1.sinaimg.cn/large/e4d30300ly1g09k86tal4j20ui0lm7ea.jpg)
-- 渲染进程：每个tab页的展示
+- Renderer渲染进程：每个tab页的展示
   ![](https://ws1.sinaimg.cn/large/e4d30300ly1g09keeue0tj20ui0lmgw9.jpg)
 - 第三方扩展插件进程
   ![](https://ws1.sinaimg.cn/large/e4d30300ly1g09ker79jkj20ui0lmtjg.jpg)

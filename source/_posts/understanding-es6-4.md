@@ -1,7 +1,7 @@
 ---
 title: ES6-Object
 date: 2019-02-14 16:58:56
-tags:
+tags: ES6
 ---
 ### 对Object的扩展
 #### 对象的类别
