@@ -11,7 +11,7 @@ Symbol是JS新引入的一个基本类型，拓宽了定义对象属性的类型
 let firstName = Symbol('first name') //传入的参数作为symbol变量的描述
 let person = {}
 person[firstName] = 'Tom'
-
+console.log(person) // {Symbol(first name): "Tom"}
 console.log(person[firstName]) // 'Tom'
 console.log(firstName) // Symbol('first name') symbol变量的描述信息存储在内部属性[[Description]]中，只有显式或隐式的调用toSting()时，会被读取到，console.log()会隐式的调用toString()方法，所以才打印出来了；String(firstName) 也会隐式调用toSting()、firstName.toString()则是显式调用
 console.log('first name' in person) // false  'first name'只是symbol变量的描述信息而已
