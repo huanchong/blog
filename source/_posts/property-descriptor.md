@@ -5,7 +5,7 @@ tags:
 ---
 ### 属性描述符
 我们定义的对象，对应的每一个属性都对应一个‘属性描述符’对象，用来描述该属性的一些特性：
-属性描述符有两种形式：数据描述符或存取描述符。数据描述符是一个具有值的属性，该值可能是可写的，也可能不是可写的。存取描述符是由getter-setter函数对描述的属性。**属性描述符必须是这两种形式之一；且不能同时是两者**
+属性描述符有两种形式：**数据描述符或存取描述符**。数据描述符是一个具有值的属性，该值可能是可写的，也可能不是可写的。存取描述符是由getter-setter函数对描述的属性。**属性描述符必须是这两种形式之一；且不能同时是两者**
 
 - 数据描述符独有的：
     - value：改属性的值
@@ -32,7 +32,7 @@ tags:
     console.log(d) //{value: 20, writable: false, enumerable: false, configurable: true}
   ```
 
-#### Object.defineProperty(obj, prop, descriptor)创建属性
+#### Object.defineProperty(obj, prop, descriptor)创建或修改对象的单个属性
 用来定义或修改obj对象上prop属性的descriptor属性描述符
 - obj：要在其上定义属性的对象。
 - prop：要定义或修改的属性的名称。
@@ -65,6 +65,28 @@ Object.defineProperty(o, "b", {
 console.log(o.b) //22
 o.b = 123
 console.log(o.b) //22 因为没有显示定义setter，所以默认值为undefined，赋值动作无效，因此o.b不会变化
+```
+#### Object.defineProperties(obj, props) 创建或修改对象的多个属性
+```js
+var  Obj = {
+  "a":10
+};
+Object.defineProperties(Obj,{
+  "a1":{
+    get: function(){return this.a+1;},
+    set: function(val){ this.a = val;}
+  },
+  "a2":{
+    get: function(){return this.a+"test";},
+    set: function(val){this.b = val}
+  }
+});
+console.log(Obj.a1); //11
+console.log(Obj.a2); //1test
+Obj.a1 = 3;
+Obj.a2 = 'hello';
+console.log(Obj.a1); //4
+console.log(Obj.a2); //3test
 ```
 #### 修改属性
 1. Writable 属性
