@@ -3,6 +3,7 @@ title: ES6-Function
 date: 2019-01-26 14:08:30
 tags: ES6
 ---
+![](https://ws1.sinaimg.cn/large/e4d30300ly1g0qs1z3avzj216w0lggpe.jpg)
 ### 函数
 #### 函数的形参带默认值
 ```js

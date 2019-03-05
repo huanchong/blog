@@ -3,6 +3,7 @@ title: ES6-Modules
 date: 2019-02-25 14:44:01
 tags: ES6
 ---
+![](https://ws1.sinaimg.cn/large/e4d30300ly1g0qs1z3avzj216w0lggpe.jpg)
 ### 模块的导入导出
 1. 导出export
    ```js

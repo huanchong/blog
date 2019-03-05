@@ -3,6 +3,7 @@ title: ES6-Promise
 date: 2019-02-24 15:06:44
 tags: ES6
 ---
+![](https://ws1.sinaimg.cn/large/e4d30300ly1g0qs1z3avzj216w0lggpe.jpg)
 ### Promise与异步编程
 #### 创建一个待执行状态的Promise
 new Promise()会立即执行，因此如果需要在合适的位置创建Promise，可以使用一个函数进行包装，合适的位置进行调用

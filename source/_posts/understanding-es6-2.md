@@ -3,6 +3,7 @@ title: ES6-String and RegExp
 date: 2019-01-23 15:28:15
 tags: ES6
 ---
+![](https://ws1.sinaimg.cn/large/e4d30300ly1g0qs1z3avzj216w0lggpe.jpg)
 ### 字符串新增部分功能
 #### 识别子字符串方法
 - includes()

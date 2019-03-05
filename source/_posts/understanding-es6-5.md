@@ -3,6 +3,7 @@ title: ES6-Destructuring
 date: 2019-02-19 16:55:29
 tags: ES6
 ---
+![](https://ws1.sinaimg.cn/large/e4d30300ly1g0qs1z3avzj216w0lggpe.jpg)
 ### 对对象与数组的解构
 #### 意义
 使用解构操作符，可以更方便的提取对象和数组中的的单个成员元素

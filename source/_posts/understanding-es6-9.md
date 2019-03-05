@@ -1,8 +1,9 @@
 ---
 title: ES6-Class
 date: 2019-02-22 10:54:41
-tags:
+tags: ES6
 ---
+![](https://ws1.sinaimg.cn/large/e4d30300ly1g0qs1z3avzj216w0lggpe.jpg)
 ### 背景
 在ES6之前，官方都不支持类的语法，很多第三方类库都通过模拟实现了类似类的用法，最终ES6引入了类
 ### 类的介绍

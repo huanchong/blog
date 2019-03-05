@@ -3,6 +3,7 @@ title: ES6-Symbol类型
 date: 2019-02-19 21:32:28
 tags: ES6
 ---
+![](https://ws1.sinaimg.cn/large/e4d30300ly1g0qs1z3avzj216w0lggpe.jpg)
 ### 意义
 Symbol是JS新引入的一个基本类型，拓宽了定义对象属性的类型(传统的对象是所有属性都是字符串，如今新增了symbol类型的属性)，同时定义对象属性是不可枚举，通过Object.keys()\Object.getOwnPropertyNames()两种方法是访问不到对象的symbol类型属性的，使得对象属性及值的访问更加的安全
 ### 使用

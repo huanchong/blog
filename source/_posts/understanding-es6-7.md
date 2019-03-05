@@ -3,6 +3,7 @@ title: ES6-Set/Map
 date: 2019-02-20 14:50:33
 tags: ES6
 ---
+![](https://ws1.sinaimg.cn/large/e4d30300ly1g0qs1z3avzj216w0lggpe.jpg)
 ### 背景
 ES6新增了两种集合类型Set、Map，用来实现不同的功能
 - Set 是不包含重复值的列表，常被用来检查某个值是否存在

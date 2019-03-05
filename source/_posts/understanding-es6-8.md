@@ -3,6 +3,7 @@ title: ES6-Iterator/Generator
 date: 2019-02-20 16:36:10
 tags: ES6
 ---
+![](https://ws1.sinaimg.cn/large/e4d30300ly1g0qs1z3avzj216w0lggpe.jpg)
 ### 迭代器与生成器
 #### 背景
 传统的遍历迭代集合的方式使用for循环，ES6引入了迭代器对象，使得操作集合更加便捷，Set、Map、for...of、扩展运算符 都用到了迭代器，**注：普通的对象不是可迭代的，因为没有Symbol(Symbol.iterator)属性**

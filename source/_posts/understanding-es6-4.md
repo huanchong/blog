@@ -3,6 +3,7 @@ title: ES6-Object
 date: 2019-02-14 16:58:56
 tags: ES6
 ---
+![](https://ws1.sinaimg.cn/large/e4d30300ly1g0qs1z3avzj216w0lggpe.jpg)
 ### 对Object的扩展
 #### 对象的类别
 1. 普通对象

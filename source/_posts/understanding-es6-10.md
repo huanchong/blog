@@ -3,6 +3,7 @@ title: ES6-Array
 date: 2019-02-24 13:42:09
 tags: ES6
 ---
+![](https://ws1.sinaimg.cn/large/e4d30300ly1g0qs1z3avzj216w0lggpe.jpg)
 ### 对数组功能的增强
 #### 数组的创建
 1. Array.of()
