@@ -26,6 +26,44 @@ tags: ES6
    console.log(firstName) // Tom
    console.log(ageOld) // 20
    ```
+3. 单纯的解构赋值，如果当前对象没有该属性，可以获取到对象继承的属性
+   ```js
+   let o = Object.create({a:'1',b:'2'}) //o继承了{a:'1',b:'2'}对象
+   let {a} = o
+   console.log(o) //{}
+   console.log(a) //1
+   ```
+4. 解构赋值是浅拷贝，即如果一个键的值是复合类型的值（数组、对象、函数）、那么解构赋值拷贝的是这个值的引用，而不是这个值的副本
+   ```js
+    let obj = { a: { b: 1 } };
+    let { a } = obj;
+    obj.a.b = 3;
+    console.log(a.b) // 3
+   ```
+##### 对象的扩展运算符
+- **这是ES2018引入的规则，之前是不支持的**
+- 扩展运算符的解构赋值也是浅拷贝
+  ```js
+  let obj = { a: { b: 1 } };
+    let { ...x } = obj;
+    obj.a.b = 3;
+    console.log(x.a.b) // 3
+  ```
+- 扩展运算符后面必须接一个变量，并且放到最后面
+  ```js
+  let { x, ...{ y, z } } = o; //报语法错误
+  ```
+- 扩展运算符的解构赋值，不能复制继承自原型对象的属性
+  ```js
+  const o = Object.create({ x: 1, y: 2 });
+    o.z = 3;
+
+    let { x, ...newObj } = o;
+    let { y, z } = newObj;
+    x // 1  普通的对象的解构赋值，可以获取来自原型对象的属性
+    y // undefined  扩展运算符的解构赋值取不到原型对象的属性，因此newObj = {z:3}，只有z属性
+    z // 3
+  ```
 #### 数组解构
 1. 按照位置依次解构赋值,可以赋默认值
    ```js
